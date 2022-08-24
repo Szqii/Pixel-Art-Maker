@@ -1,0 +1,112 @@
+.App {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .colorPicker {
+    display: flex;
+    align-items: center;
+    height: 8vw;
+    margin: 20px 0;
+
+    .react-colorful {
+      width: 30vw;
+      height: 100%;
+      margin-right: 20px;
+      cursor: pointer;
+
+      .react-colorful__pointer {
+        border-radius: 0;
+      }
+    }
+
+    .currentColor {
+      width: 5vw;
+      height: 5vw;
+
+      border: 1px solid rgb(222, 222, 222);
+    }
+  }
+
+  .colorHistory {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 2vw;
+
+    .colorHistoryItem {
+      width: 2vw;
+      height: 100%;
+      margin-right: 2px;
+      transition: 0.2s all ease-in-out;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// Flip animation
+.exportButton {
+  opacity: 1;
+  outline: 0;
+  color: #fff;
+  line-height: 40px;
+  font-size: 1.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  letter-spacing: -3px;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    cursor: pointer;
+    &:after {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
+
+    &:before {
+      opacity: 0;
+      transform: translateY(-50%) rotateX(90deg);
+    }
+  }
+
+  &:after {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    border: 1px solid #ec0b43;
+    width: 100%;
+    color: #ec0b43;
+    display: block;
+    transition: 0.4s;
+    position: absolute;
+    background: #fff;
+    content: attr(data-back);
+    transform: translateY(50%) rotateX(90deg);
+    padding: 15px 0;
+  }
+
+  &:before {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    color: #fff;
+    display: block;
+    padding: 15px 40px;
+    line-height: 40px;
+    transition: 0.4s;
+    position: relative;
+    background: #ec0b43;
+    content: attr(data-front);
+    transform: translateY(0) rotateX(0);
+  }
+}
